@@ -1,13 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
-import { Text } from "@chakra-ui/react" 
-import { ChakraProvider } from "@chakra-ui/react"
+import "./App.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import ListContainer from "./components/ListContainer";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-
     <ChakraProvider>
-      <ListContainer />
+      <Navbar></Navbar>
+      <ListContainer></ListContainer>
     </ChakraProvider>
   );
 }
