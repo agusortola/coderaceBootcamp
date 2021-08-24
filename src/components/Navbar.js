@@ -6,8 +6,12 @@ import {
   StackDivider,
   Text,
   Button,
-  ButtonGroup
+  ButtonGroup,
 } from "@chakra-ui/react";
+
+const handleClick = () => {
+  console.log("Clickeado");
+};
 
 const Navbar = () => {
   return (
@@ -17,7 +21,7 @@ const Navbar = () => {
       justify="space-between"
       p={10}
     >
-      <VStack  spacing={5}>
+      <VStack spacing={5}>
         <Box h="40px">
           <Text fontWeight={700} fontSize={24}>
             Neinstein Bootcamp
@@ -26,10 +30,11 @@ const Navbar = () => {
       </VStack>
       <VStack spacing={5}>
         <Box h="40px">
-            <Button colorScheme="blue">New</Button>
+          <Button onClick={handleClick} colorScheme="blue">
+            New
+          </Button>
         </Box>
       </VStack>
-
     </HStack>
   );
 };
