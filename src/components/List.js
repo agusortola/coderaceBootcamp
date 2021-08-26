@@ -4,6 +4,9 @@ import {
   IconButton,
   HStack,
   VStack,
+  Text,
+  Center,
+  Accordion,
 } from "@chakra-ui/react";
 
 import QuestionItem from "./QuestionItem";
@@ -18,34 +21,18 @@ const List = () => {
  
   const {data: questions} = useContext(DataContext)
 
-
   return (
-    <div display="block">
+    <div display= 'block' width='100%'>
+    <Accordion width='100%' >
       {questions && questions.map((question) => (
-        <HStack>
-          <VStack>
-            <QuestionItem
+            <QuestionItem 
               className="question-preview"
               question={question}
               key={question.id}
             />
-          </VStack>
-          <VStack>
-            <HStack>
-              <IconButton
-                colorScheme="blue"
-                aria-label="Search database"
-                icon={<ChatIcon />}
-              />
-              <IconButton
-                colorScheme="green"
-                aria-label="Search database"
-                icon={<CheckIcon />}
-              />
-            </HStack>
-          </VStack>
-        </HStack>
+            
       ))}
+    </Accordion>
     </div>
   );
 };
