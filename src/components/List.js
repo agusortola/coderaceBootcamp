@@ -21,6 +21,8 @@ const List = () => {
  
   const {data: questions} = useContext(DataContext)
 
+  console.log(questions)
+
   return (
     <div display= 'block' width='100%'>
     <Accordion width='100%' >
