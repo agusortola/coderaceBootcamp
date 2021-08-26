@@ -1,64 +1,27 @@
-import { useState } from "react";
-import { EditIcon, CheckIcon } from "@chakra-ui/icons";
+import { useState, useEffect } from "react";
+import { ChatIcon, CheckIcon } from "@chakra-ui/icons";
 import {
-  Box,
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Button,
   IconButton,
   HStack,
   VStack,
 } from "@chakra-ui/react";
 
 import QuestionItem from "./QuestionItem";
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
 
 const handleClick = () => {
   console.log("Clickeado");
 };
 
 const List = () => {
-  const [questions, setQuestions] = useState([
-    {
-      title: "Acaso es alto bootcamp?",
-      category: "lorem ipsum...",
-      id: 1,
-      date: "10-20-12",
-      answers: [
-        "si papurri, alto bootcamp el del nenardo",
-        "no, es una vere",
-        "pero aguante jugar al cs y fumar vela",
-      ],
-    },
-    {
-      title: "Ayuda con el If del ejercicio 2!!!",
-      category: "orem ipsum...",
-      id: 2,
-      date: "10-20-12",
-      answers: [
-        "si papurri, alto bootcamp el del nenardo",
-        "no, es una vere",
-        "pero aguante jugar al cs y fumar vela",
-      ],
-    },
-    {
-      title: "aguante bokita el mas grande",
-      category: "lorem ipsum...",
-      id: 3,
-      date: "10-20-12",
-      answers: [
-        "si papurri, alto bootcamp el del nenardo",
-        "no, es una vere",
-        "pero aguante jugar al cs y fumar vela",
-      ],
-    },
-  ]);
+ 
+  const {data: questions} = useContext(DataContext)
+
 
   return (
     <div display="block">
-      {questions.map((question) => (
+      {questions && questions.map((question) => (
         <HStack>
           <VStack>
             <QuestionItem
@@ -72,7 +35,7 @@ const List = () => {
               <IconButton
                 colorScheme="blue"
                 aria-label="Search database"
-                icon={<EditIcon />}
+                icon={<ChatIcon />}
               />
               <IconButton
                 colorScheme="green"
