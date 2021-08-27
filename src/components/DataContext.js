@@ -11,7 +11,6 @@ export const DataProvider = ({ children }) => {
 
     useEffect(()=>{
         if(newQuestion !== undefined){
-            console.log('newQuestion', newQuestion)
             fetch("http://localhost:8000/questions", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

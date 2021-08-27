@@ -9,15 +9,16 @@ import { Link } from "react-router-dom";
 const Create = () => {
   const [title, setTitle] = useState("");
   const [codeFragment, setCodeFragment] = useState([""]);
-  const category = "ASD";
-  const date = Moment().format("MMM Do YY");
-  const emptyArr = [];
+  
+
 
   const { setNewQuestion } = useContext(DataContext);
 
   const handleSubmit = (e) => {
+    const date = Moment().format("MMM Do YY");
+    const answers = [];
     e.preventDefault();
-    const question = { title, category, date, emptyArr };
+    const question = { title, codeFragment, date, answers };
     setNewQuestion(question);
   };
   return (
@@ -36,7 +37,7 @@ const Create = () => {
         </Center>
         <Center h={30} p={10}>
           <Text fontSize={24} fontWeight={300}>
-            Queres agregarle un fragmento de codigo? Pegalo acá abajo
+            Queres agregar un fragmento de codigo como duda? Pegalo acá abajo (de todos modos escribi una pregunta arriba!)
           </Text>
         </Center>
         <Center>

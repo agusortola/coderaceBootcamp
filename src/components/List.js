@@ -16,23 +16,20 @@ const handleClick = () => {
 };
 
 const List = () => {
- 
-  const {data: questions} = useContext(DataContext)
-
-  console.log(questions)
+  const { data: questions } = useContext(DataContext);
 
   return (
-    <div display= 'block' width='100%'>
-    <Accordion width='100%' >
-      {questions && questions.map((question) => (
-            <QuestionItem 
+    <div display="block" width="100%">
+      <Accordion width="100%">
+        {questions &&
+          questions.map((question) => (
+            <QuestionItem
               className="question-preview"
               question={question}
               key={question.id}
             />
-            
-      ))}
-    </Accordion>
+          ))}
+      </Accordion>
     </div>
   );
 };
