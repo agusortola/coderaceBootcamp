@@ -9,14 +9,15 @@ export const DataProvider = ({ children }) => {
 
   const { data } = useFetch("http://localhost:8000/questions");
 
-  function createNewAnswer(selectedQuestion, answer) {
-    if (selectedQuestion !== undefined && answer) {
-      fetch("http://localhost:8000/questions", {
-        method: "PUT",
+  function createNewAnswer(id, answer) {
+    if (id !== undefined && answer) {
+      fetch("http://localhost:8000/questions/" + id, {
+        method:'PUT',
         headers: { "Content-Type": "application/json" },
-        body: selectedQuestion?.answers?.push(answer),
-      }).then(() => {
-        console.log("new answer added");
+        body: JSON.stringify(answers.push(answer)),
+      })
+      .then(res => {
+        console.log(res);
       });
     }
   }

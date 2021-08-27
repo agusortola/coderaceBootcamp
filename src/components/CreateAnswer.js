@@ -18,7 +18,7 @@ const CreateAnswer = () => {
     //   const date = Moment().format("MMM Do YY");
     e.preventDefault();
     const answer = { body, isValidated };
-    createNewAnswer(selectedQuestion, answer);
+    createNewAnswer(id, answer);
   };
 
   return (
