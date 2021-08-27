@@ -20,6 +20,7 @@ const Create = () => {
     e.preventDefault();
     const question = { title, codeFragment, date, answers };
     setNewQuestion(question);
+    
   };
   return (
     <Center marginTop={50}>

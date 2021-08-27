@@ -11,30 +11,41 @@ import {
 } from "@chakra-ui/react";
 import { ChatIcon, CheckIcon } from "@chakra-ui/icons";
 import { IconButton, HStack, VStack } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useParams } from "react";
 import { Link } from "react-router-dom";
+import useFetch from "../useFetch";
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
 
 const QuestionItem = ({ question }) => {
-  const handleClick = () => {
-    
+
+  const { createOrValidateAnswer } = useContext(DataContext);
+
+  const handleClick = (answer) => {
+
+    answer.isValidated = !answer.isValidated
+
+    createOrValidateAnswer(question, answer)
+    console.log(answer)
+
+    // const answer = {body, !isValidated}
+
   };
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [isValidated, setIsValidated] = useState(false);
 
   return (
     <AccordionItem flex="1" key={question.id} p={5}>
       <h2>
-        <AccordionButton>
+        <AccordionButton colorScheme="blue">
           {question.title} <br></br>
           <Link to={`/questions/${question.id}`}>
-          <IconButton
-            colorScheme="blue"
-            size="sm"
-            aria-label="Search database"
-            icon={<ChatIcon />}
+            <IconButton
+              colorScheme="blue"
+              size="sm"
+              aria-label="Search database"
+              icon={<ChatIcon />}
             />
-            </Link>
+          </Link>
         </AccordionButton>
         <Code>{question.codeFragment}</Code>
       </h2>
@@ -43,10 +54,13 @@ const QuestionItem = ({ question }) => {
         question.answers.map((answer) => {
           return (
             <AccordionPanel>
-              <Text fontWeight={answer.isValidated ? 500 : 300}>{answer.body}</Text>
+              <Text fontWeight={answer.isValidated ? 500 : 300}>
+                {answer.body}
+              </Text>
               <IconButton
-                onClick={() => setIsValidated(!isValidated)}
+                onClick={() => handleClick(answer) }
                 colorScheme="green"
+                variant={answer.isValidated? "solid" : "outline" }
                 size="xs"
                 aria-label="Search database"
                 icon={<CheckIcon />}

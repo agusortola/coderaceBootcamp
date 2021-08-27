@@ -16,7 +16,10 @@ const handleClick = () => {
 };
 
 const List = () => {
+  
   const { data: questions } = useContext(DataContext);
+
+  console.log("questions", questions)
 
   return (
     <div display="block" width="100%">

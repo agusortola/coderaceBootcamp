@@ -9,16 +9,23 @@ import { Link, useParams } from "react-router-dom";
 const CreateAnswer = () => {
   const [body, setBody] = useState("");
   const [isValidated, setIsValidated] = useState(false);
-  const { createNewAnswer } = useContext(DataContext);
+  const { createOrValidateAnswer } = useContext(DataContext);
   const { id } = useParams();
-  const { data } = useFetch("http://localhost:8000/questions");
-  const selectedQuestion = data?.filter(i => i.id == id)
+  const { data } = useFetch("https://61293109068adf001789b814.mockapi.io/questions/" + id);
+  const selectedQuestion = "data?.filter(i => i.id == id)"
+
+//   const question = selectedQuestion[0]
+
+  
+
 
   const handleSubmit = (e) => {
-    //   const date = Moment().format("MMM Do YY");
+
     e.preventDefault();
-    const answer = { body, isValidated };
-    createNewAnswer(id, answer);
+    const answer = { body, isValidated }
+
+    createOrValidateAnswer(data, answer);
+
   };
 
   return (
@@ -26,7 +33,7 @@ const CreateAnswer = () => {
       <Box h="100%" w="60%" justifySelf="center">
         <Center h={30} p={10}>
           <Text fontSize={16} fontWeight={300}>
-            {selectedQuestion && selectedQuestion[0].title}
+            {data && data.title}
           </Text>
         </Center>
         <Center h={30} p={10}>

@@ -6,7 +6,7 @@
       "date": "10-20-12",
       "answers": [
         {
-          "body": "Hay muchas formas de hacerlo. Esta es una y esta es otra",
+          "body": "Esta es una respuesta. Si la ves en negrita es porque está validada como correcta por Neinstein",
           "isValidated": true
         },
         {
@@ -15,6 +15,10 @@
         },
         {
           "body": "Y este no tenía ni idea pero igual queria comentar.",
+          "isValidated": false
+        },
+        {
+          "body": "asdasdadsasd",
           "isValidated": false
         }
       ],
@@ -59,6 +63,48 @@
         }
       ],
       "id": 4
+    },
+    {
+      "title": "Esta es una nueva pregunta para agregar. Denme una mano!!!",
+      "codeFragment": "console.log('hola')",
+      "date": "Aug 27th 21",
+      "answers": [],
+      "id": 5
+    },
+    {
+      "title": "Esta es una nueva pregunta para agregar. Denme una mano!!!",
+      "codeFragment": "console.log('hola')",
+      "date": "Aug 27th 21",
+      "answers": [],
+      "id": 6
+    },
+    {
+      "title": "Esta es una nueva pregunta para agregar. Denme una mano!!!",
+      "codeFragment": "console.log('hola')",
+      "date": "Aug 27th 21",
+      "answers": [],
+      "id": 7
+    },
+    {
+      "title": "Esta es una nueva pregunta para agregar. Denme una mano!!!",
+      "codeFragment": "console.log('hola')",
+      "date": "Aug 27th 21",
+      "answers": [],
+      "id": 8
+    },
+    {
+      "title": "esta es la nueva pregunta del bartolero?",
+      "codeFragment": "console.log('soy el bartolero')",
+      "date": "Aug 27th 21",
+      "answers": [],
+      "id": 9
+    },
+    {
+      "title": "esta es la nueva pregunta del bartolero?",
+      "codeFragment": "console.log('soy el bartolero')",
+      "date": "Aug 27th 21",
+      "answers": [],
+      "id": 10
     }
   ]
 }
