@@ -11,7 +11,7 @@ import {
 import { Link } from 'react-router-dom'
 
 const handleClick = () => {
-  console.log("Clickeado");
+
 };
 
 const Navbar = () => {

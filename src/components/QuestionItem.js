@@ -12,10 +12,11 @@ import {
 import { ChatIcon, CheckIcon } from "@chakra-ui/icons";
 import { IconButton, HStack, VStack } from "@chakra-ui/react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const QuestionItem = ({ question }) => {
   const handleClick = () => {
-    console.log("Clickeado");
+    
   };
 
   const [isOpen, setIsOpen] = useState(false);
@@ -26,12 +27,14 @@ const QuestionItem = ({ question }) => {
       <h2>
         <AccordionButton>
           {question.title} <br></br>
+          <Link to={`/questions/${question.id}`}>
           <IconButton
             colorScheme="blue"
             size="sm"
             aria-label="Search database"
             icon={<ChatIcon />}
-          />
+            />
+            </Link>
         </AccordionButton>
         <Code>{question.codeFragment}</Code>
       </h2>
