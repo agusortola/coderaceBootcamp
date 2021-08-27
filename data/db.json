@@ -1,37 +1,34 @@
 {
-    "questions":[
-        {
-            "title": "Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.?",
-            "category": "lorem ipsum...",
-            "id": 1,
-            "date": "10-20-12",
-            "answers": [
-              "Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayoría sufrió alteraciones en alguna manera, ya sea porque se le agregó humor, o palabras aleatorias que no parecen ni un poco creíbles.",
-              "El trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de de Finibus Bonorum et Maloru por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.",
-              "Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen."
-            ]
-          },
-          {
-            "title": "Ayuda con el If del ejercicio 2!!!",
-            "category": "orem ipsum...",
-            "id": 2,
-            "date": "10-20-12",
-            "answers": [
-              "si papurri, alto bootcamp el del nenardo",
-              "no, es una vere",
-              "pero aguante jugar al cs y fumar vela"
-            ]
-          },
-          {
-            "title": "aguante bokita el mas grande",
-            "category": "lorem ipsum...",
-            "id": 3,
-            "date": "10-20-12",
-            "answers": [
-              "si papurri, alto bootcamp el del nenardo",
-              "no, es una vere",
-              "pero aguante jugar al cs y fumar vela"
-            ]
-          }
-    ]
+  "questions": [
+    {
+      "title": "Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen.?",
+      "category": "lorem ipsum...",
+      "date": "10-20-12",
+      "answers": [
+        "Hay muchas variaciones de los pasajes de Lorem Ipsum disponibles, pero la mayoría sufrió alteraciones en alguna manera, ya sea porque se le agregó humor, o palabras aleatorias que no parecen ni un poco creíbles.",
+        "El trozo de texto estándar de Lorem Ipsum usado desde el año 1500 es reproducido debajo para aquellos interesados. Las secciones 1.10.32 y 1.10.33 de de Finibus Bonorum et Maloru por Cicero son también reproducidas en su forma original exacta, acompañadas por versiones en Inglés de la traducción realizada en 1914 por H. Rackham.",
+        "Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen."
+      ]
+    },
+    {
+      "title": "Ayuda con el If del ejercicio 2!!!",
+      "category": "orem ipsum...",
+      "date": "10-20-12",
+      "answers": [
+        "si papurri, alto bootcamp el del nenardo",
+        "no, es una vere",
+        "pero aguante jugar al cs y fumar vela"
+      ]
+    },
+    {
+      "title": "aguante bokita el mas grande",
+      "category": "lorem ipsum...",
+      "date": "10-20-12",
+      "answers": [
+        "si papurri, alto bootcamp el del nenardo",
+        "no, es una vere",
+        "pero aguante jugar al cs y fumar vela"
+      ]
+    }
+  ]
 }

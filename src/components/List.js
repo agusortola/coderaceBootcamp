@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { ChatIcon, CheckIcon } from "@chakra-ui/icons";
 import {
   IconButton,
   HStack,

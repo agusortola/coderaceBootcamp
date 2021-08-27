@@ -1,13 +1,24 @@
 import { Textarea, Center, Box, Text, Code, Button } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import useFetch from "../useFetch";
+import Moment from 'moment';
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
 
-const Create = () => {
+const Create = ({createNewQuestion}) => {
   const [title, setTitle] = useState("");
-  const [codeFragment, setCodeFragment] = useState("");
+  const [codeFragment, setCodeFragment] = useState([""]);
+  const category = "ASD"
+  const date = Moment().format("MMM Do YY");
+  const emptyArr = []
+
+  const { setNewQuestion } = useContext(DataContext)
 
   const handleSubmit = (e) =>{
+    
     e.preventDefault()
-    const question = {title, codeFragment}
+    const question = {title, category, date, emptyArr}
+    setNewQuestion(question)
   }
   return (
     <Center marginTop={50}>
