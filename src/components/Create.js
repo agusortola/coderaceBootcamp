@@ -1,25 +1,25 @@
 import { Textarea, Center, Box, Text, Code, Button } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import useFetch from "../useFetch";
-import Moment from 'moment';
+import Moment from "moment";
 import { useContext } from "react";
 import { DataContext } from "./DataContext";
+import { Link } from "react-router-dom";
 
-const Create = ({createNewQuestion}) => {
+const Create = () => {
   const [title, setTitle] = useState("");
   const [codeFragment, setCodeFragment] = useState([""]);
-  const category = "ASD"
+  const category = "ASD";
   const date = Moment().format("MMM Do YY");
-  const emptyArr = []
+  const emptyArr = [];
 
-  const { setNewQuestion } = useContext(DataContext)
+  const { setNewQuestion } = useContext(DataContext);
 
-  const handleSubmit = (e) =>{
-    
-    e.preventDefault()
-    const question = {title, category, date, emptyArr}
-    setNewQuestion(question)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const question = { title, category, date, emptyArr };
+    setNewQuestion(question);
+  };
   return (
     <Center marginTop={50}>
       <Box h="100%" w="60%" justifySelf="center">
@@ -46,7 +46,11 @@ const Create = ({createNewQuestion}) => {
           ></Textarea>
         </Center>
         <Center marginTop={10}>
-          <Button colorScheme="green" onClick={handleSubmit}>Submit</Button>
+            <Button colorScheme="green" onClick={handleSubmit}>
+          <Link to ="/">
+              Submit
+          </Link>
+            </Button>
         </Center>
       </Box>
     </Center>

@@ -39,7 +39,7 @@ const QuestionItem = ({ question }) => {
       </AccordionButton>
       </h2>
 
-      {question.answers.map((answer) => {
+      {!!question.answers && question.answers.map((answer) => {
           return (
             <AccordionPanel>
               <Text fontWeight={isValidated ? 500 : 300}>{answer}</Text>

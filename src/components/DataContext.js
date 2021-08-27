@@ -5,20 +5,24 @@ import useFetch from "../useFetch";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-    const [newQuestion, setNewQuestion] = useState({})
+    const [newQuestion, setNewQuestion] = useState(undefined)
 
     const { data } = useFetch("http://localhost:8000/questions");
 
     useEffect(()=>{
-        console.log('newQuestion', newQuestion)
-        fetch("http://localhost:8000/questions", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newQuestion),
-          }).then(() => {
-            console.log("new question added");
-          });
+        if(newQuestion !== undefined){
+            console.log('newQuestion', newQuestion)
+            fetch("http://localhost:8000/questions", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newQuestion),
+              }).then(() => {
+                console.log("new question added");
+              });
+        }
     },[newQuestion])
+
+    useEffect(()=>{},[])
 
 
   return (
