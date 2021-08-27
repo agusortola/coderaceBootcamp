@@ -7,6 +7,10 @@ export const DataContext = createContext()
 export const DataProvider = ({children}) => {
 
     const {data} = useFetch('http://localhost:8000/questions')
+
+    const createNewQuestion = () =>{
+        
+    }
     
 
     return(
