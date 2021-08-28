@@ -5,11 +5,13 @@ import Moment from "moment";
 import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Create = () => {
   const [title, setTitle] = useState("");
   const [codeFragment, setCodeFragment] = useState([""]);
   
+  const history = useHistory();
 
 
   const { setNewQuestion } = useContext(DataContext);
@@ -20,6 +22,7 @@ const Create = () => {
     e.preventDefault();
     const question = { title, codeFragment, date, answers };
     setNewQuestion(question);
+    history.push("/")
     
   };
   return (
@@ -49,9 +52,7 @@ const Create = () => {
         </Center>
         <Center marginTop={10}>
             <Button colorScheme="green" onClick={handleSubmit}>
-          <Link to ="/">
               Submit
-          </Link>
             </Button>
         </Center>
       </Box>

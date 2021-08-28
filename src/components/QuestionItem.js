@@ -16,12 +16,19 @@ import { Link } from "react-router-dom";
 import useFetch from "../useFetch";
 import { useContext } from "react";
 import { DataContext } from "./DataContext";
+import { useEffect } from "react";
 
 const QuestionItem = ({ question }) => {
 
   const { createOrValidateAnswer } = useContext(DataContext);
+  const [toggleClasses, setToggleClasses] = useState(undefined)
+  useEffect(()=>{
+    
+  },[toggleClasses])
 
-  const handleClick = (answer) => {
+  function handleClick(answer) {
+    
+    setToggleClasses(!toggleClasses)
 
     answer.isValidated = !answer.isValidated
 
