@@ -55,8 +55,8 @@ const Create = () => {
           <Editor
             language="xml"
             displayName="HTML"
-            value={codeFragment}
-            onChange={setCodeFragment}
+            value={value}
+            onChange={setValue}
           />
         </div>
         <div className="pane">
