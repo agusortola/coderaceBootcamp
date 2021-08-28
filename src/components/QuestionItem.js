@@ -17,6 +17,7 @@ import useFetch from "../useFetch";
 import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import { useEffect } from "react";
+import Editor from "./Editor";
 
 const QuestionItem = ({ question }) => {
 
@@ -54,7 +55,10 @@ const QuestionItem = ({ question }) => {
             />
           </Link>
         </AccordionButton>
-        <Code>{question.codeFragment}</Code>
+        <Editor  language="xml"
+            displayName="HTML"
+            value={question.codeFragment}
+            />
       </h2>
 
       {!!question.answers &&

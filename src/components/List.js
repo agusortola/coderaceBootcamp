@@ -1,9 +1,5 @@
 import {
-  IconButton,
-  HStack,
-  VStack,
-  Text,
-  Center,
+
   Accordion,
 } from "@chakra-ui/react";
 
@@ -11,15 +7,20 @@ import QuestionItem from "./QuestionItem";
 import { useContext } from "react";
 import { DataContext } from "./DataContext";
 
-const handleClick = () => {
-
-};
 
 const List = () => {
   
   const { data: questions } = useContext(DataContext);
 
-  console.log("questions", questions)
+
+  // function handleClick(){
+
+  //   fetch("https://61293109068adf001789b814.mockapi.io/questions/" + 10,{
+  //     method:"DELETE",
+  //   }).then(()=>{
+  //     console.log('deleteados')
+  //   })
+  // }
 
   return (
     <div display="block" width="100%">

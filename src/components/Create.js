@@ -6,13 +6,14 @@ import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import Editor from "./Editor";
 
 const Create = () => {
   const [title, setTitle] = useState("");
-  const [codeFragment, setCodeFragment] = useState([""]);
-  
-  const history = useHistory();
+  const [codeFragment, setCodeFragment] = useState("");
+  const [value, setValue] = useState("");
 
+  const history = useHistory();
 
   const { setNewQuestion } = useContext(DataContext);
 
@@ -22,8 +23,7 @@ const Create = () => {
     e.preventDefault();
     const question = { title, codeFragment, date, answers };
     setNewQuestion(question);
-    history.push("/")
-    
+    history.push("/");
   };
   return (
     <Center marginTop={50}>
@@ -41,7 +41,8 @@ const Create = () => {
         </Center>
         <Center h={30} p={10}>
           <Text fontSize={24} fontWeight={300}>
-            Queres agregar un fragmento de codigo como duda? Pegalo acá abajo (de todos modos escribi una pregunta arriba!)
+            Queres agregar un fragmento de codigo como duda? Pegalo acá abajo
+            (de todos modos escribi una pregunta arriba!)
           </Text>
         </Center>
         <Center>
@@ -50,10 +51,27 @@ const Create = () => {
             onChange={(e) => setCodeFragment(e.target.value)}
           ></Textarea>
         </Center>
+        <div className="pane top-pane">
+          <Editor
+            language="xml"
+            displayName="HTML"
+            value={codeFragment}
+            onChange={setCodeFragment}
+          />
+        </div>
+        <div className="pane">
+          <iframe
+            title="output"
+            sandbox="allow-scripts"
+            frameBorder="0"
+            width="100%"
+            maxHeight="40px"
+          />
+        </div>
         <Center marginTop={10}>
-            <Button colorScheme="green" onClick={handleSubmit}>
-              Submit
-            </Button>
+          <Button colorScheme="green" onClick={handleSubmit}>
+            Submit
+          </Button>
         </Center>
       </Box>
     </Center>
