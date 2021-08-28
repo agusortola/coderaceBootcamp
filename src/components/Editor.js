@@ -1,6 +1,6 @@
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/material.css";
-import "codemirror/mode/xml/xml";
+import "codemirror/mode/clike/clike";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 import { useState } from "react";
 import { Button } from "@chakra-ui/react";
@@ -26,7 +26,7 @@ const Editor = (props) => {
           options={{
             lineWrapping: true,
             lint: true,
-            mode: language,
+            mode: "text/x-csrc",
             theme: "material",
             lineNumbers: true,
           }}
