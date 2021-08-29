@@ -17,7 +17,6 @@ const handleClick = () => {
 const Navbar = () => {
   return (
     <HStack
-      divider={<StackDivider borderColor="gray.200" />}
       spacing={1}
       justify="space-between"
       p={10}
