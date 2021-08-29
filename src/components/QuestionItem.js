@@ -43,27 +43,30 @@ const QuestionItem = ({ question }) => {
           justify="space-between"
           marginBottom={5}
         >
-          <HStack flex="0" flexGrow="0">
-            <Text fontWeight={500} fontSize={14} color="grey">
-              {question.answers.length}
-            </Text>
-            <ChatIcon color="grey" fontSize={16}></ChatIcon>
-          </HStack>
-          <VStack textAlign="left" flexGrow="1" alignItems="flex-start">
-            <p>
-              <AccordionButton colorScheme="blue" textAlign="left">
-                <Text fontWeight={400}>{question.title}</Text>
+          <HStack flexGrow="1" flexGrow="1" spacing={2}>
+            <VStack>
+              <HStack>
+
+              <Text fontWeight={500} fontSize={14} color="grey">
+                {question.answers.length}
+              </Text>
+              <ChatIcon color="grey" fontSize={16}></ChatIcon>
+              </HStack>
+              <VStack justify="center" width="15%">
+                <Badge colorScheme="purple" size="xs">
+                  JAVA
+                </Badge>
+              </VStack>
+            </VStack>
+            <HStack></HStack>
+            <VStack textAlign="left" flexGrow="1" alignItems="flex-start">
+              <AccordionButton colorScheme="blue" textAlign="left"  flexGrow="1" width='100%'>
+                <Text fontWeight={400} flexGrow="1" width="100%">
+                  {question.title}
+                </Text>
                 <AccordionIcon />
               </AccordionButton>
-            </p>
-            <HStack justify="space-between">
-              <Badge colorScheme="purple">JAVA</Badge> 
-              <Badge>SQL</Badge>
-              <Badge colorScheme="yellow">git</Badge>
-              <Badge colorScheme="green">Mongo</Badge>
-            </HStack>
-          </VStack>
-          <HStack>
+            </VStack>
             <IconButton
               colorScheme="blue"
               size="sm"
