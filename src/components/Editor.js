@@ -1,5 +1,5 @@
 import "codemirror/lib/codemirror.css";
-import "codemirror/theme/material.css";
+import "codemirror/theme/the-matrix.css";
 import "codemirror/mode/clike/clike";
 import { Controlled as ControlledEditor } from "react-codemirror2";
 import { useState } from "react";
@@ -7,19 +7,15 @@ import { Button } from "@chakra-ui/react";
 
 const Editor = (props) => {
   const { language, value, onChange } = props;
-  const [isOpen, setIsOpen] = useState(false);
+
 
   function handleChange(value) {
     onChange(value);
   }
   return (
     <div className="editor-container">
-      <div className="editor-title">
-        <Button onClick={() => setIsOpen(!isOpen)}
-        colorScheme='grey' variant="outline" size="xs">See Code</Button>
-      </div>
-      {isOpen && (
         <ControlledEditor
+          
           onBeforeChange={handleChange}
           value={value}
           className="code-mirror-wrapper"
@@ -27,11 +23,10 @@ const Editor = (props) => {
             lineWrapping: true,
             lint: true,
             mode: "text/x-csrc",
-            theme: "material",
             lineNumbers: true,
+               
           }}
         />
-      )}
     </div>
   );
 };

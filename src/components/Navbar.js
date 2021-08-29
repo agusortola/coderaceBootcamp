@@ -18,10 +18,12 @@ const Navbar = () => {
   return (
     <HStack
       divider={<StackDivider borderColor="gray.200" />}
-      spacing={15}
+      spacing={1}
       justify="space-between"
       p={10}
-    >
+      width='70%'
+      margin='auto'    
+      >
       <VStack spacing={5}>
         <Box h="40px">
         <Link to ="/">

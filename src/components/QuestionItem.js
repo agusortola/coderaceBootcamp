@@ -5,11 +5,12 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Button,
   Text,
-  Code,
+  Center,
+  Stack,
+  Button,
 } from "@chakra-ui/react";
-import { ChatIcon, CheckIcon } from "@chakra-ui/icons";
+import { ChatIcon, CheckIcon, ViewIcon } from "@chakra-ui/icons";
 import { IconButton, HStack, VStack } from "@chakra-ui/react";
 import { useState, useParams } from "react";
 import { Link } from "react-router-dom";
@@ -18,68 +19,106 @@ import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import { useEffect } from "react";
 import Editor from "./Editor";
+import { Badge } from "@chakra-ui/react";
 
 const QuestionItem = ({ question }) => {
-
   const { createOrValidateAnswer } = useContext(DataContext);
-  const [toggleClasses, setToggleClasses] = useState(undefined)
-  useEffect(()=>{
-    
-  },[toggleClasses])
+  const [toggleClasses, setToggleClasses] = useState(undefined);
+  const [openCode, setOpenCode] = useState(false);
+
+  useEffect(() => {}, [toggleClasses]);
 
   function handleClick(answer) {
-    
-    setToggleClasses(!toggleClasses)
-
-    answer.isValidated = !answer.isValidated
-
-    createOrValidateAnswer(question, answer)
-    console.log(answer)
-
-    // const answer = {body, !isValidated}
-
-  };
-
+    setToggleClasses(!toggleClasses);
+    answer.isValidated = !answer.isValidated;
+    createOrValidateAnswer(question, answer);
+  }
 
   return (
-    <AccordionItem flex="1" key={question.id} p={5}>
-      <h2>
-        <AccordionButton colorScheme="blue">
-          {question.title} <br></br>
-          <Link to={`/questions/${question.id}`}>
+    <div className="root">
+      <AccordionItem flex="1" key={question.id} p={5}>
+        <HStack
+          flex="1"
+          className="question"
+          justify="space-between"
+          marginBottom={5}
+        >
+          <HStack flex="0" flexGrow="0">
+            <Text fontWeight={500} fontSize={14} color="grey">
+              {question.answers.length}
+            </Text>
+            <ChatIcon color="grey" fontSize={16}></ChatIcon>
+          </HStack>
+          <VStack textAlign="left" flexGrow="1" alignItems="flex-start">
+            <p>
+              <AccordionButton colorScheme="blue" textAlign="left">
+                <Text fontWeight={400}>{question.title}</Text>
+                <AccordionIcon />
+              </AccordionButton>
+            </p>
+            <HStack justify="space-between">
+              <Badge colorScheme="purple">JAVA</Badge> 
+              <Badge>SQL</Badge>
+              <Badge colorScheme="yellow">git</Badge>
+              <Badge colorScheme="green">Mongo</Badge>
+            </HStack>
+          </VStack>
+          <HStack>
             <IconButton
               colorScheme="blue"
               size="sm"
+              variant="ghost"
               aria-label="Search database"
-              icon={<ChatIcon />}
+              icon={<ViewIcon fontSize={18} />}
+              onClick={() => setOpenCode(!openCode)}
             />
-          </Link>
-        </AccordionButton>
-        <Editor  language="xml"
+            <Link to={`/questions/${question.id}`}>
+              <IconButton
+                colorScheme="blue"
+                size="sm"
+                variant="ghost"
+                aria-label="Search database"
+                icon={<ChatIcon fontSize={18} />}
+              />
+            </Link>
+          </HStack>
+        </HStack>
+        {openCode && (
+          <Editor
+            language="xml"
             displayName="HTML"
             value={question.codeFragment}
-            />
-      </h2>
+          />
+        )}
 
-      {!!question.answers &&
-        question.answers.map((answer) => {
-          return (
-            <AccordionPanel>
-              <Text fontWeight={answer.isValidated ? 500 : 300}>
-                {answer.body}
-              </Text>
-              <IconButton
-                onClick={() => handleClick(answer) }
-                colorScheme="green"
-                variant={answer.isValidated? "solid" : "outline" }
-                size="xs"
-                aria-label="Search database"
-                icon={<CheckIcon />}
-              />
-            </AccordionPanel>
-          );
-        })}
-    </AccordionItem>
+        {!!question.answers &&
+          question.answers.map((answer) => {
+            return (
+              <AccordionPanel
+                borderRadius={10}
+                background={answer.isValidated ? "#d8fae8" : "#f6f6f6"}
+                padding={10}
+                marginTop={5}
+                marginBottom={5}
+              >
+                <HStack justify="space-between">
+                  <Text fontWeight={answer.isValidated ? 400 : 300}>
+                    {answer.body}
+                  </Text>
+                  <IconButton
+                    onClick={() => handleClick(answer)}
+                    colorScheme={answer.isValidated ? "green" : "grey"}
+                    variant="ghost"
+                    size="xs"
+                    aria-label="Search database"
+                    icon={<CheckIcon fontSize={answer.isValidated ? 14 : 10} />}
+                  />
+                </HStack>
+              </AccordionPanel>
+            );
+          })}
+      </AccordionItem>
+    </div>
   );
 };
 
