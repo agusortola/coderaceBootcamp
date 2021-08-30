@@ -4,7 +4,7 @@ const QUESTIONS = () => BASE_URL + '/questions';
 
 const QUESTION = questionId => QUESTIONS() + '/' + questionId;
 
-const ANSWER = () => QUESTIONS() + '/answer';
+const ANSWER = questionId => QUESTION(questionId) + '/answer';
 
 export default {
     QUESTIONS, QUESTION, ANSWER
