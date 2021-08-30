@@ -10,51 +10,24 @@ export const DataProvider = ({ children }) => {
 
   const { data } = useFetch(Paths.QUESTIONS());
 
-  console.log(Paths.QUESTIONS())
-
-  // function validateAnswer(data, answer, id) {
-
-  //   data.answers.push(answer)
-  //   // console.log("data", data)
-
-  //   if (data.id !== undefined && answer) {
-  //     fetch("https://61293109068adf001789b814.mockapi.io/" + data.id , {
-  //       method:'PUT',
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(data)
-  //     })
-  //     .then(res => {
-  //       console.log(data);
-  //     })
-  //   }
-  // }
-
   const createOrValidateAnswer = (data, answer) => {
-
-    if(data.answers.includes(answer)){
-      console.log('si lo contiene pa')
-    }else{
-      data.answers.push(answer)
-      // console.log("data", data)
-    }
+    data?.answers?.push(answer);
+    console.log("data", data);
 
     if (data.id !== undefined && answer) {
-      fetch("https://61293109068adf001789b814.mockapi.io/questions/" + data.id , {
-        method:'PUT',
+      fetch(Paths.ANSWER(data.id), {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      })
-      .then(res => {
-        console.log(data);
-      })
+        body: JSON.stringify(data),
+      }).then((res) => {
+        console.log(data, "Ya se pusheo la respuesta!");
+      }).catch(e=> console.log(e))
     }
-  }
-
-
+  };
 
   useEffect(() => {
     if (newQuestion !== undefined) {
-      fetch(Paths.QUESTIONS() , {
+      fetch(Paths.QUESTIONS(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newQuestion),
@@ -65,7 +38,9 @@ export const DataProvider = ({ children }) => {
   }, [newQuestion]);
 
   return (
-    <DataContext.Provider value={{ data, setNewQuestion, createOrValidateAnswer }}>
+    <DataContext.Provider
+      value={{ data, setNewQuestion, createOrValidateAnswer }}
+    >
       {children}
     </DataContext.Provider>
   );

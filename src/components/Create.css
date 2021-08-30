@@ -1,0 +1,7 @@
+
+.CodeMirror-wrap{
+    display: block;
+    min-height: 120px;
+    height: fit-content;
+    max-height: 300px;
+  }

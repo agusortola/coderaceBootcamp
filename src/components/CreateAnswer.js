@@ -5,27 +5,24 @@ import Moment from "moment";
 import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import { Link, useParams } from "react-router-dom";
+import Paths from "../rest/paths.js";
 
 const CreateAnswer = () => {
   const [body, setBody] = useState("");
   const [isValidated, setIsValidated] = useState(false);
   const { createOrValidateAnswer } = useContext(DataContext);
   const { id } = useParams();
-  const { data } = useFetch("https://61293109068adf001789b814.mockapi.io/questions/" + id);
-  const selectedQuestion = "data?.filter(i => i.id == id)"
+  const { data } = useFetch(Paths.QUESTION(id));
 
-//   const question = selectedQuestion[0]
 
-  
-
+  console.log("data", data)
+  const date = new Date().toISOString().replace("Z", "");
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
-    const answer = { body, isValidated }
+    const answer = {  body, date };
 
     createOrValidateAnswer(data, answer);
-
   };
 
   return (
@@ -47,17 +44,6 @@ const CreateAnswer = () => {
             onChange={(e) => setBody(e.target.value)}
           ></Textarea>
         </Center>
-        {/* <Center h={30} p={10}>
-          <Text fontSize={24} fontWeight={300}>
-            Queres agregar un fragmento de codigo como duda? Pegalo acá abajo (de todos modos escribi una pregunta arriba!)
-          </Text>
-        </Center>
-        <Center>
-          <Textarea
-            value={codeFragment}
-            onChange={(e) => setCodeFragment(e.target.value)}
-          ></Textarea>
-        </Center> */}
         <Center marginTop={10}>
           <Button colorScheme="green" onClick={handleSubmit}>
             <Link to="/">Submit</Link>
