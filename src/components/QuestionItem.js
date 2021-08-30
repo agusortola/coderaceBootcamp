@@ -10,7 +10,7 @@ import {
   Stack,
   Button,
 } from "@chakra-ui/react";
-import { ChatIcon, CheckIcon, ViewIcon } from "@chakra-ui/icons";
+import { ChatIcon, CheckIcon, ViewIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 import {
   IconButton,
   HStack,
@@ -30,13 +30,8 @@ const QuestionItem = ({ question }) => {
   const { createOrValidateAnswer } = useContext(DataContext);
   const [openCode, setOpenCode] = useState(false);
 
-
-
-
-  function handleCopyId(id){
-
+  function handleCopyId(id) {
     navigator.clipboard.writeText(id);
-    
   }
 
   return (
@@ -69,28 +64,30 @@ const QuestionItem = ({ question }) => {
                 <Text fontSize={10} fontStyle="italic" color="grey">
                   Created: {question.date}
                 </Text>
-                <IconButton
-                color="grey"
-                size="xs"
-                variant="ghost"
-                aria-label="Search database"
-                icon={<ViewIcon fontSize={10} />}
-                onClick={()=>handleCopyId(question.id)}
-              />
-              </HStack>
-              <Tooltip label="Expandir respuestas" placement='top'>
-              <AccordionButton
-                colorScheme="blue"
-                textAlign="left"
-                flexGrow="1"
-                width="100%"
-              >
-                <Text fontWeight={400} flexGrow="1" width="100%">
-                  {question.title}
-                </Text>
-                <AccordionIcon  />
-              </AccordionButton>
+                <Tooltip label="Copiar ID">
+                  <IconButton
+                    color="grey"
+                    size="xs"
+                    variant="ghost"
+                    aria-label="Search database"
+                    icon={<InfoOutlineIcon fontSize={10} />}
+                    onClick={() => handleCopyId(question.id)}
+                  />
                 </Tooltip>
+              </HStack>
+              <Tooltip label="Expandir respuestas" placement="top">
+                <AccordionButton
+                  colorScheme="blue"
+                  textAlign="left"
+                  flexGrow="1"
+                  width="100%"
+                >
+                  <Text fontWeight={400} flexGrow="1" width="100%">
+                    {question.title}
+                  </Text>
+                  <AccordionIcon />
+                </AccordionButton>
+              </Tooltip>
             </VStack>
             <Tooltip label="Ver código de la pregunta">
               <IconButton
@@ -137,28 +134,30 @@ const QuestionItem = ({ question }) => {
                   <Text fontSize={10} fontStyle="italic" color="grey">
                     Created: {question.date}
                   </Text>
-                  <IconButton
-                color="grey"
-                size="xs"
-                variant="ghost"
-                aria-label="Search database"
-                icon={<ViewIcon fontSize={10} />}
-                onClick={()=>handleCopyId(answer.id)}
-              />
+                  <Tooltip label="Copiar ID">
+                    <IconButton
+                      color="grey"
+                      size="xs"
+                      variant="ghost"
+                      aria-label="Search database"
+                      icon={<InfoOutlineIcon fontSize={10} />}
+                      onClick={() => handleCopyId(answer.id)}
+                    />
+                  </Tooltip>
                 </HStack>
                 <HStack justify="space-between">
                   <Text fontWeight={answer.validated ? 400 : 300}>
                     {answer.body}
                   </Text>
-                  {answer.validated &&
-                  <IconButton
-                  colorScheme= "green"
-                  variant="ghost"
-                  size="xs"
-                  aria-label="Search database"
-                  icon={<CheckIcon fontSize={14} />}
-                  />
-                }
+                  {answer.validated && (
+                    <IconButton
+                      colorScheme="green"
+                      variant="ghost"
+                      size="xs"
+                      aria-label="Search database"
+                      icon={<CheckIcon fontSize={14} />}
+                    />
+                  )}
                 </HStack>
               </AccordionPanel>
             );
