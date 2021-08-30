@@ -6,8 +6,8 @@ import Paths from "../rest/paths.js";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [newQuestion, setNewQuestion] = useState(undefined);
 
+  const [newQuestion, setNewQuestion] = useState(undefined);
   const { data } = useFetch(Paths.QUESTIONS());
 
   const createOrValidateAnswer = (data, answer) => {
@@ -15,16 +15,17 @@ export const DataProvider = ({ children }) => {
     console.log("data", data);
 
     if (data.id !== undefined && answer) {
-
       answer.questionId = data.id; // NO TOCAR -> pronto a refactorizarse
 
       fetch(Paths.ANSWER(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(answer),
-      }).then((res) => {
-        console.log(data, "Ya se pusheo la respuesta!");
-      }).catch(e=> console.log(e))
+      })
+        .then((res) => {
+          console.log(data, "Ya se pusheo la respuesta!");
+        })
+        .catch((e) => console.log(e));
     }
   };
 
