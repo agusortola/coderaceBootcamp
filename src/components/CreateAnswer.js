@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { DataContext } from "./DataContext";
 import { Link, useParams } from "react-router-dom";
 import Paths from "../rest/paths.js";
+import { useHistory } from "react-router-dom";
 
 const CreateAnswer = () => {
   const [body, setBody] = useState("");
@@ -13,16 +14,14 @@ const CreateAnswer = () => {
   const { createOrValidateAnswer } = useContext(DataContext);
   const { id } = useParams();
   const { data } = useFetch(Paths.QUESTION(id));
-
-
-  console.log("data", data)
+  const history = useHistory();
   const date = new Date().toISOString().replace("Z", "");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const answer = {  body, date };
-
     createOrValidateAnswer(data, answer);
+    history.push('/')
   };
 
   return (

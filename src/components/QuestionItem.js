@@ -1,38 +1,56 @@
 import {
-  Box,
-  Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
   Text,
-  Center,
-  Stack,
-  Button,
-} from "@chakra-ui/react";
-import { ChatIcon, CheckIcon, ViewIcon, InfoOutlineIcon } from "@chakra-ui/icons";
-import {
   IconButton,
   HStack,
   VStack,
-  StackDivider,
   Badge,
   Tooltip,
 } from "@chakra-ui/react";
-import { useState, useParams } from "react";
+import {
+  ChatIcon,
+  CheckIcon,
+  ViewIcon,
+  InfoOutlineIcon,
+} from "@chakra-ui/icons";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { DataContext } from "./DataContext";
-import { useEffect } from "react";
 import Editor from "./Editor";
 
 const QuestionItem = ({ question }) => {
-  const { createOrValidateAnswer } = useContext(DataContext);
   const [openCode, setOpenCode] = useState(false);
 
   function handleCopyId(id) {
     navigator.clipboard.writeText(id);
   }
+
+  function formatDate(d) {
+    const date = new Date(d)
+
+    date.setHours(date.getHours() - 3)
+    
+    let formattedDate = ''
+
+    const separated = date.toLocaleDateString().split('/')
+    const month = separated[0]
+    const day = separated[1]
+    const year = separated[2]
+
+    const separator = '-'
+
+    formattedDate += day >= 10 ? day : `0${day}` 
+    formattedDate += separator
+    formattedDate += month >= 10 ? month : `0${month}` 
+    formattedDate += separator
+    formattedDate += year
+
+    formattedDate += ' ' + date.toLocaleTimeString()
+
+    return formattedDate
+}
 
   return (
     <div className="root">
@@ -62,7 +80,7 @@ const QuestionItem = ({ question }) => {
             <VStack textAlign="left" flexGrow="1" alignItems="flex-start">
               <HStack marginLeft={5}>
                 <Text fontSize={10} fontStyle="italic" color="grey">
-                  Created: {question.date}
+                  Created: {formatDate(question.date)}
                 </Text>
                 <Tooltip label="Copiar ID">
                   <IconButton
@@ -132,7 +150,7 @@ const QuestionItem = ({ question }) => {
               >
                 <HStack>
                   <Text fontSize={10} fontStyle="italic" color="grey">
-                    Created: {question.date}
+                    Created: {formatDate(answer.date)}
                   </Text>
                   <Tooltip label="Copiar ID">
                     <IconButton
