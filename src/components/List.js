@@ -13,6 +13,7 @@ const List = () => {
   const { data: questions } = useContext(DataContext);
 
 
+
   // function handleClick(){
 
   //   fetch("https://61293109068adf001789b814.mockapi.io/questions/" + 10,{

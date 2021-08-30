@@ -18,7 +18,7 @@ const Create = () => {
   const { setNewQuestion } = useContext(DataContext);
 
   const handleSubmit = (e) => {
-    const date = Moment().format("MMM Do YY");
+    const date = new Date().toISOString().replace('Z', '');
     const answers = [];
     e.preventDefault();
     const question = { title, codeFragment, date, answers };
@@ -55,8 +55,8 @@ const Create = () => {
           <Editor
             language="xml"
             displayName="HTML"
-            value={value}
-            onChange={setValue}
+            value={codeFragment}
+            onChange={setCodeFragment}
           />
         </div>
         <div className="pane">

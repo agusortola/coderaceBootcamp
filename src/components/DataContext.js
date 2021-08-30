@@ -1,13 +1,16 @@
 import { createContext } from "react";
 import { useState, useEffect } from "react";
 import useFetch from "../useFetch";
+import Paths from "../rest/paths.js";
 
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [newQuestion, setNewQuestion] = useState(undefined);
 
-  const { data } = useFetch("https://61293109068adf001789b814.mockapi.io/questions/");
+  const { data } = useFetch(Paths.QUESTIONS());
+
+  console.log(Paths.QUESTIONS())
 
   // function validateAnswer(data, answer, id) {
 
@@ -51,7 +54,8 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     if (newQuestion !== undefined) {
-      fetch("https://61293109068adf001789b814.mockapi.io/questions/", {
+      console.log(JSON.stringify(newQuestion))
+      fetch(Paths.QUESTIONS() , {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newQuestion),
