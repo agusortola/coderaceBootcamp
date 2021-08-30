@@ -9,7 +9,7 @@ const Editor = (props) => {
   const { language, value, onChange } = props;
 
 
-  function handleChange(value) {
+  function handleChange(editor, data, value) {
     onChange(value);
   }
   return (
