@@ -15,10 +15,13 @@ export const DataProvider = ({ children }) => {
     console.log("data", data);
 
     if (data.id !== undefined && answer) {
-      fetch(Paths.ANSWER(data.id), {
+
+      answer.questionId = data.id; // NO TOCAR -> pronto a refactorizarse
+
+      fetch(Paths.ANSWER(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(answer),
       }).then((res) => {
         console.log(data, "Ya se pusheo la respuesta!");
       }).catch(e=> console.log(e))
