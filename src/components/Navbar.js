@@ -4,6 +4,7 @@ import {
   VStack,
   Box,
   Divider,
+  Center,
   Text,
   IconButton,
   Tooltip,
@@ -25,13 +26,16 @@ const Navbar = () => {
         margin="auto"
       >
         <VStack spacing={5}>
-          <Box h="40px">
+          <Center h="40px" width="100%" flex='1' alignItems='center'>
             <Link to="/">
-              <Text fontWeight={900} fontFamily="montserrat" fontSize={22}>
+              <Text fontWeight={900} as="h1"  fontFamily="montserrat" fontSize={22}>
                 CodeRace 
               </Text>
+              <Text fontWeight={600} as="h2" color="blue" fontFamily="montserrat" font fontSize={12}  letterSpacing= {6}>
+                BOOTCAMP 
+              </Text>
             </Link>
-          </Box>
+          </Center>
         </VStack>
         <VStack spacing={5}>
           <Box h="40px">
