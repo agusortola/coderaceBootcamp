@@ -28,29 +28,29 @@ const QuestionItem = ({ question }) => {
   }
 
   function formatDate(d) {
-    const date = new Date(d)
+    const date = new Date(d);
 
-    date.setHours(date.getHours() - 3)
-    
-    let formattedDate = ''
+    date.setHours(date.getHours() - 3);
 
-    const separated = date.toLocaleDateString().split('/')
-    const month = separated[0]
-    const day = separated[1]
-    const year = separated[2]
+    let formattedDate = "";
 
-    const separator = '-'
+    const separated = date.toLocaleDateString().split("/");
+    const month = separated[0];
+    const day = separated[1];
+    const year = separated[2];
 
-    formattedDate += day >= 10 ? day : `0${day}` 
-    formattedDate += separator
-    formattedDate += month >= 10 ? month : `0${month}` 
-    formattedDate += separator
-    formattedDate += year
+    const separator = "-";
 
-    formattedDate += ' ' + date.toLocaleTimeString()
+    formattedDate += day >= 10 ? day : `0${day}`;
+    formattedDate += separator;
+    formattedDate += month >= 10 ? month : `0${month}`;
+    formattedDate += separator;
+    formattedDate += year;
 
-    return formattedDate
-}
+    formattedDate += " " + date.toLocaleTimeString();
+
+    return formattedDate;
+  }
 
   return (
     <div className="root">
@@ -61,7 +61,7 @@ const QuestionItem = ({ question }) => {
           justify="space-between"
           marginBottom={5}
         >
-          <HStack flexGrow="1" flexGrow="1" spacing={2}>
+          <HStack flexGrow="1" flexGrow="1" spacing={3}>
             <VStack>
               <Tooltip label={question.answers.length + " respuestas"}>
                 <HStack>
@@ -80,6 +80,18 @@ const QuestionItem = ({ question }) => {
             <VStack textAlign="left" flexGrow="1" alignItems="flex-start">
               <HStack marginLeft={5}>
                 <Text fontSize={10} fontStyle="italic" color="grey">
+                  {question.answers.length == 0 && (
+                    <Badge
+                      variant="subtle"
+                      colorScheme="green"
+                      ml="1"
+                      fontStyle="normal"
+                      fontSize="1em"
+                      marginRight={5}
+                    >
+                      New
+                    </Badge>
+                  )}
                   Created: {formatDate(question.date)}
                 </Text>
                 <Tooltip label="Copiar ID">
@@ -103,6 +115,7 @@ const QuestionItem = ({ question }) => {
                   <Text fontWeight={400} flexGrow="1" width="100%">
                     {question.title}
                   </Text>
+
                   <AccordionIcon />
                 </AccordionButton>
               </Tooltip>
