@@ -27,8 +27,8 @@ const Navbar = () => {
         <VStack spacing={5}>
           <Box h="40px">
             <Link to="/">
-              <Text fontWeight={700} fontSize={20}>
-                Neinstein Bootcamp
+              <Text fontWeight={900} fontFamily="montserrat" fontSize={22}>
+                CodeRace 
               </Text>
             </Link>
           </Box>
