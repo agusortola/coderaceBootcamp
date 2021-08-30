@@ -54,7 +54,6 @@ export const DataProvider = ({ children }) => {
 
   useEffect(() => {
     if (newQuestion !== undefined) {
-      console.log(JSON.stringify(newQuestion))
       fetch(Paths.QUESTIONS() , {
         method: "POST",
         headers: { "Content-Type": "application/json" },
