@@ -28,16 +28,10 @@ import Editor from "./Editor";
 
 const QuestionItem = ({ question }) => {
   const { createOrValidateAnswer } = useContext(DataContext);
-  const [toggleClasses, setToggleClasses] = useState(undefined);
   const [openCode, setOpenCode] = useState(false);
 
-  useEffect(() => {}, [toggleClasses]);
 
-  function handleClick(answer) {
-    setToggleClasses(!toggleClasses);
-    answer.isValidated = !answer.isValidated;
-    createOrValidateAnswer(question, answer);
-  }
+
 
   function handleCopyId(id){
 
@@ -134,7 +128,7 @@ const QuestionItem = ({ question }) => {
             return (
               <AccordionPanel
                 borderRadius={10}
-                background={answer.isValidated ? "#d8fae8" : "#f6f6f6"}
+                background={answer.validated ? "#d8fae8" : "#f6f6f6"}
                 padding={5}
                 marginTop={5}
                 marginBottom={5}
@@ -153,17 +147,18 @@ const QuestionItem = ({ question }) => {
               />
                 </HStack>
                 <HStack justify="space-between">
-                  <Text fontWeight={answer.isValidated ? 400 : 300}>
+                  <Text fontWeight={answer.validated ? 400 : 300}>
                     {answer.body}
                   </Text>
+                  {answer.validated &&
                   <IconButton
-                    onClick={() => handleClick(answer)}
-                    colorScheme={answer.isValidated ? "green" : "grey"}
-                    variant="ghost"
-                    size="xs"
-                    aria-label="Search database"
-                    icon={<CheckIcon fontSize={answer.isValidated ? 14 : 10} />}
+                  colorScheme= "green"
+                  variant="ghost"
+                  size="xs"
+                  aria-label="Search database"
+                  icon={<CheckIcon fontSize={14} />}
                   />
+                }
                 </HStack>
               </AccordionPanel>
             );
