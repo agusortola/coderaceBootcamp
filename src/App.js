@@ -6,7 +6,7 @@ import { DataProvider } from "./components/DataContext";
 import Create from "./components/Create";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import CreateAnswer from "./components/CreateAnswer";
-
+import FilterComponent from "./components/FiltersComponent";
 
 function App() {
   return (
@@ -16,6 +16,7 @@ function App() {
           <Navbar />
           <Switch>
             <Route exact path="/">
+              <FilterComponent />
               <ListContainer />
             </Route>
             <Route path="/create">

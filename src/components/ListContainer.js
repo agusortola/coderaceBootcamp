@@ -9,7 +9,7 @@ const ListContainer = () => {
   const { data: questions,  } = useContext(DataContext);
 
   return (
-    <Center marginTop={50}>
+    <Center >
       <Box h="100%" w="60%" justifySelf="center">
         <List questions={questions}/>
       </Box>

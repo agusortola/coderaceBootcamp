@@ -3,7 +3,7 @@ import QuestionItem from "./QuestionItem";
 
 const List = ({ questions }) => {
   return (
-    <Center width="100%" marginTop={150}>
+    <Center width="100%" marginTop={30}>
       <Accordion width="70%">
         {questions &&
           questions.map((question) => (

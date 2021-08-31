@@ -54,8 +54,9 @@ const QuestionItem = ({ question }) => {
 
   return (
     <div className="root">
-      <AccordionItem flex="1" key={question.id} p={5}>
+      <AccordionItem flex="1" key={question.id} p={5} >
         <HStack
+        color="#636e72"
           flex="1"
           className="question"
           justify="space-between"
@@ -116,13 +117,13 @@ const QuestionItem = ({ question }) => {
                     {question.title}
                   </Text>
 
-                  <AccordionIcon />
+                  <AccordionIcon color="#636e72" />
                 </AccordionButton>
               </Tooltip>
             </VStack>
             <Tooltip label="Ver código de la pregunta">
               <IconButton
-                colorScheme="blue"
+                color="#0984e3"
                 size="sm"
                 variant="ghost"
                 aria-label="Search database"
@@ -133,7 +134,7 @@ const QuestionItem = ({ question }) => {
             <Link to={`/questions/${question.id}`}>
               <Tooltip label="Responder">
                 <IconButton
-                  colorScheme="blue"
+                  color="#0984e3"
                   size="sm"
                   variant="ghost"
                   aria-label="Search database"
@@ -156,10 +157,11 @@ const QuestionItem = ({ question }) => {
             return (
               <AccordionPanel
                 borderRadius={10}
-                background={answer.validated ? "#d8fae8" : "#f6f6f6"}
-                padding={5}
-                marginTop={5}
-                marginBottom={5}
+                background={answer.validated ? "#e3fbea" : "#ededed"}
+                padding={3}
+                marginTop={3}
+                marginBottom={3}
+                color="#636e72"
               >
                 <HStack>
                   <Text fontSize={10} fontStyle="italic" color="grey">
@@ -177,7 +179,7 @@ const QuestionItem = ({ question }) => {
                   </Tooltip>
                 </HStack>
                 <HStack justify="space-between">
-                  <Text fontWeight={answer.validated ? 400 : 300}>
+                  <Text fontWeight={answer.validated ? 400 : 300} color="#2d3436">
                     {answer.body}
                   </Text>
                   {answer.validated && (

@@ -44,12 +44,14 @@ const Navbar = () => {
                 <IconButton
                 value='Nueva'
                   isRound
+                  color="#0984e3"
+                  colorScheme="white"
                   onClick={handleClick}
-                  colorScheme="blue"
+                  color="#0984e3"
                   size="sm"
                   variant="solid"
                   aria-label=" New"
-                  icon={<AddIcon fontSize={18} />}
+                  icon={<AddIcon fontSize={22} />}
                 >
                 </IconButton>
               </Tooltip>
