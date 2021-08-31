@@ -1,10 +1,10 @@
-import { Accordion } from "@chakra-ui/react";
+import { Accordion, Center } from "@chakra-ui/react";
 import QuestionItem from "./QuestionItem";
 
 const List = ({ questions }) => {
   return (
-    <div display="block" width="100%">
-      <Accordion width="100%">
+    <Center width="100%" marginTop={150}>
+      <Accordion width="70%">
         {questions &&
           questions.map((question) => (
             <QuestionItem
@@ -14,7 +14,7 @@ const List = ({ questions }) => {
             />
           ))}
       </Accordion>
-    </div>
+    </Center>
   );
 };
 
