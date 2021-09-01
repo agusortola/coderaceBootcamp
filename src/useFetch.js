@@ -10,8 +10,9 @@ const useFetch = (url) => {
             })
             .then((data)=>{
                 setData(data)
+                console.log('ran')
             })
-      },[url, data])
+      },[data])
       return {data}
 }
 

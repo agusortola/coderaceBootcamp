@@ -12,7 +12,6 @@ export const DataProvider = ({ children }) => {
 
   const createOrValidateAnswer = (data, answer) => {
     data?.answers?.push(answer);
-    console.log("data", data);
 
     if (data.id !== undefined && answer) {
       fetch(Paths.ANSWER(data.id), {
@@ -37,7 +36,7 @@ export const DataProvider = ({ children }) => {
         console.log("new question added");
       });
     }
-  }, [newQuestion, createOrValidateAnswer]);
+  }, [newQuestion]);
 
   return (
     <DataContext.Provider
