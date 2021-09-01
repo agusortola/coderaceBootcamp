@@ -37,7 +37,7 @@ export const DataProvider = ({ children }) => {
         console.log("new question added");
       });
     }
-  }, [newQuestion]);
+  }, [newQuestion, createOrValidateAnswer]);
 
   return (
     <DataContext.Provider
