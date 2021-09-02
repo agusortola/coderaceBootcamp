@@ -157,7 +157,7 @@ const QuestionItem = ({ question }) => {
             return (
               <AccordionPanel
                 borderRadius={10}
-                background={answer.validated ? "#e3fbea" : "#ededed"}
+                background={answer.validated ? "#ebfff1" : "#fafafa"}
                 padding={3}
                 marginTop={3}
                 marginBottom={3}
