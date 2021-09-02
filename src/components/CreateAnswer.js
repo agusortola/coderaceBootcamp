@@ -28,12 +28,12 @@ const CreateAnswer = () => {
   return (
     <Center marginTop={50}>
       <Box h="100%" w="60%" justifySelf="center">
-        <Center h={30} p={10} bg="#fafafa" borderRadius={10}>
+        <Center h={30} p={8} bg="#fafafa" borderRadius={10}>
           <Text fontSize={18} fontWeight={400}>
             {data && data.title}
           </Text>
         </Center>
-        <Center width="100%" bg="#fafafa" justifyContent="start">
+        <Center width="100%" bg="#fafafa" borderRadius={10} p={8}>
           {data && data.codeFragment ? (
             <Editor
               language="xml"
